@@ -6,7 +6,7 @@ Task: Annotate the given function
 from typing import Iterable, List, Tuple, Sequence
 
 
-def element_length(lst: Iterable) -> List[Tuple[Sequence, int]]:
+def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
     """
     Task: Annotate the given function
     """
