@@ -3,10 +3,10 @@
 Task: Annotate the given function
 """
 
-from typing import Iterable, List, Tuple
+from typing import Iterable, List, Tuple, Sequence
 
 
-def element_length(lst: Iterable) -> List[tuple]:
+def element_length(lst: Iterable) -> List[Tuple[Sequence, int]]:
     """
     Task: Annotate the given function
     """
