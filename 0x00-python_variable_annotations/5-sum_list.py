@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from typing import List
+
 """
 Annotated function sum_list
 that takes in a list input_list of floats
