@@ -5,9 +5,11 @@ Unit testing
 """
 
 from unittest import TestCase
+from unittest.mock import patch
 from parameterized import parameterized
 
 access_nested_map = __import__('utils').access_nested_map
+get_json = __import__('utils').get_json
 
 
 class TestAccessNestedMap(TestCase):
@@ -30,10 +32,31 @@ class TestAccessNestedMap(TestCase):
         ({}, ("a",)),
         ({"a": 1}, ("a", "b")),
     ])
-
     def test_access_nested_map_exception(self, nested_map, path):
         """
         Tests for keyerror exception
         """
         with self.assertRaises(KeyError):
             access_nested_map(nested_map, path)
+
+
+class TestGetJson(TestCase):
+    """
+    TestGetJson class
+    """
+
+    @parameterized.expand([
+        ("http://example.com", True),
+        ("http://holberton.io", False),
+    ])
+    def test_get_json(self, url, expected):
+        """
+        test_get_json method
+        We don’t want to make any actual external HTTP calls. Use
+        unittest.mock.patch to patch requests.get. Make sure it
+        returns a Mock object with a json method that returns test_payload
+        """
+
+        with patch('requests.get') as mock_request:
+            mock_request.return_value.json.return_value = expected
+            self.assertEqual(get_json(url), expected)
