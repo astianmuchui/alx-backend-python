@@ -12,6 +12,7 @@ access_nested_map = __import__('utils').access_nested_map
 get_json = __import__('utils').get_json
 memoize = __import__('utils').memoize
 
+
 class TestAccessNestedMap(TestCase):
     """
     TestAccessNestedMap class
@@ -81,7 +82,6 @@ class TestMemoize(TestCase):
             @memoize
             def a_property(self):
                 return self.a_method()
-
 
         with patch.object(TestClass, 'a_method') as mock_method:
             mock_method.return_value = 42
